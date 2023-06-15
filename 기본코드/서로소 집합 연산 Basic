@@ -4,6 +4,13 @@ def find_parent(parent, x):
         return find_parent(parent, parent[x])
     return x
 
+#경로압축 find : 루트노드 찾으면서 부모테이블을 갱신하므로 시간복잡도 개선
+def find_parent_pathcompression(parent, x):
+    if parent[x] != x:
+        parent[x] = find_parent(parent, parent[x])
+    return parent[x]
+    
+
 #합치기
 def union_parent(parent, a, b):
     a = find_parent(parent, a)
